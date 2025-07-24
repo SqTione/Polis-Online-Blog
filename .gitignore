@@ -13,6 +13,7 @@ apps/api/.env
 
 # Docker
 *.env
+!*example.env
 docker-compose.override.yml
 docker-compose.dev.yml
 *.log
