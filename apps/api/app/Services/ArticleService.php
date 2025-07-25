@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types= 1);
+declare(strict_types=1);
 
 namespace App\Services;
 
@@ -9,7 +9,7 @@ use App\DTOs\ArticleDTO;
 use App\Repositories\ArticleRepository;
 use Illuminate\Database\Eloquent\Collection;
 
-class ArticleService 
+class ArticleService
 {
 	public function __construct(
 		private readonly ArticleRepository $articleRepository
@@ -19,7 +19,7 @@ class ArticleService
 	 * Gets all articles
 	 * @return Collection<int, Article>
 	 */
-	public function index() 
+	public function index()
 	{
 		$articles = $this->articleRepository->findAll();
 
@@ -30,7 +30,8 @@ class ArticleService
 	 * Gets paginated articles
 	 * @param int $perPage Count of articles per page (Default = 10)
 	 */
-	public function paginate(int $perPage = 10): Array {
+	public function paginate(int $perPage = 10): array
+	{
 		$articles = $this->articleRepository->paginate($perPage);
 
 		return [
@@ -52,7 +53,8 @@ class ArticleService
 	 * @param int $id Article ID
 	 * @return Article Found Article
 	 */
-	public function getById(int $id) {
+	public function getById(int $id)
+	{
 		$article = $this->articleRepository->findById($id);
 
 		return $article;
@@ -63,7 +65,7 @@ class ArticleService
 	 * @param ArticleDTO $articleDTO Article DTO
 	 * @return Article Created Article
 	 */
-	public function create(ArticleDTO $articleDTO) 
+	public function create(ArticleDTO $articleDTO)
 	{
 		$article = $this->articleRepository->create([
 			"title" => $articleDTO->title,

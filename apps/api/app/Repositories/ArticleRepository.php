@@ -6,14 +6,15 @@ namespace App\Repositories;
 
 use App\Article;
 
-interface IArticleRepository {
+interface IArticleRepository
+{
 	public function findAll();
 	public function findById(int $id): Article;
 	public function paginate(int $perPage = 10);
 	public function create(array $data): Article;
 }
 
-class ArticleRepository implements IArticleRepository 
+class ArticleRepository implements IArticleRepository
 {
 	/**
 	 * Returns all articles
@@ -39,7 +40,7 @@ class ArticleRepository implements IArticleRepository
 	 * @param int $id Article ID
 	 * @return Article
 	 */
-	public function findById(int $id): Article 
+	public function findById(int $id): Article
 	{
 		return Article::findOrFail($id);
 	}
@@ -49,7 +50,7 @@ class ArticleRepository implements IArticleRepository
 	 * @param array $data Article Data
 	 * @return Article
 	 */
-	public function create(array $data): Article 
+	public function create(array $data): Article
 	{
 		return Article::create($data);
 	}

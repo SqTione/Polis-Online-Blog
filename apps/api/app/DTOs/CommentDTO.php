@@ -2,17 +2,19 @@
 
 namespace App\DTOs;
 
-class ArticleDTO
+use App\Comment;
+
+class CommentDTO
 {
 	public function __construct(
-		public readonly string $title,
-		public readonly string $content
+		public readonly string $authorName,
+		public readonly string $content,
 	) {}
 
 	public static function fromArray(array $data): self
 	{
 		return new self(
-			title: $data["title"],
+			authorName: $data["author_name"],
 			content: $data["content"],
 		);
 	}
