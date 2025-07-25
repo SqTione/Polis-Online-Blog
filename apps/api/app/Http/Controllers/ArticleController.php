@@ -20,7 +20,7 @@ class ArticleController extends Controller
         return response()->json($articles);
     }
 
-    public function show(int $id) 
+    public function showLast(int $id)
     {
         // Getting article by id
         $article = $this->articleService->getById($id);
@@ -29,7 +29,7 @@ class ArticleController extends Controller
         return $article;
     }
 
-    public function store(ArticleRequest $request) 
+    public function store(ArticleRequest $request)
     {
         // Request validation
         $articleDTO = $request->toDTO();

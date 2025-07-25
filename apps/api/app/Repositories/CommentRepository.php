@@ -11,7 +11,7 @@ interface ICommentRepository
 	public function findById(int $id): Comment;
 	public function findAllByArticleId(int $articleId): array;
 	public function findLatestByArticleId(int $articleId): ?Comment;
-	public function create(array $data): Comment;
+	public function create(array $data, int $articleId): Comment;
 }
 
 class CommentRepository implements ICommentRepository
@@ -55,8 +55,12 @@ class CommentRepository implements ICommentRepository
 	 * @param array $data
 	 * @return Comment
 	 */
-	public function create(array $data): Comment
+	public function create(array $data, int $articleId): Comment
 	{
-		return Comment::create($data);
+		return Comment::create([
+			'author_name' => $data['author_name'],
+			'content' => $data['content'],
+			'article_id' => $articleId
+		]);
 	}
 }

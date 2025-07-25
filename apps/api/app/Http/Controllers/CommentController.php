@@ -3,47 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\CommentModel;
+use App\Http\Requests\CommentRequest;
+use App\Services\CommentService;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function __construct(
+        private readonly CommentService $commentService
+    ) {}
     /**
-     * Display a listing of the resource.
+     * Gets all comments of Article
      */
-    public function index()
+    public function index(int $articleId)
     {
-        //
+        // Getting comments data
+        return $this->commentService->getByArticleId($articleId);
     }
 
     /**
-     * Display the specified resource.
+     * Gets latest comment of the Article
      */
-    public function show(CommentModel $commentModel)
+    public function showLast(int $articleId)
     {
-        //
+        return $this->commentService->getLatestByArticleId($articleId);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Creates new Comment
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request, int $articleId)
     {
-        //
-    }
+        // Request validation
+        $commentDTO = $request->toDTO();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, CommentModel $commentModel)
-    {
-        //
-    }
+        // Creating new Comment
+        $comment = $this->commentService->create($commentDTO, $articleId);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(CommentModel $commentModel)
-    {
-        //
+        // Returning response with created Comment
+        return response()->json([$comment], 201);
     }
 }

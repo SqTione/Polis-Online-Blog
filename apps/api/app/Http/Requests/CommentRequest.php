@@ -25,7 +25,6 @@ class CommentRequest extends FormRequest
         return [
             'author_name' => 'required|string|max:255',
             'content' => 'required|string|max:16000',
-            'article_id' => 'required|integer|min:1|exists:article,id'
         ];
     }
 
