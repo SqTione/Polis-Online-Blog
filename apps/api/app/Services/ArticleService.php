@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Article;
 use App\DTOs\ArticleDTO;
 use App\Repositories\ArticleRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class ArticleService 
 {
@@ -14,12 +15,16 @@ class ArticleService
 		private readonly ArticleRepository $articleRepository
 	) {}
 
-		public function index() 
-		{
-			$articles = $this->articleRepository->findAll();
+	/**
+	 * Gets all articles
+	 * @return Collection<int, Article>
+	 */
+	public function index() 
+	{
+		$articles = $this->articleRepository->findAll();
 
-			return $articles;
-		}
+		return $articles;
+	}
 
 	/**
 	 * Gets paginated articles
@@ -40,6 +45,17 @@ class ArticleService
 				'prev' => $articles->previousPageUrl()
 			]
 		];
+	}
+
+	/**
+	 * Gets article by ID
+	 * @param int $id Article ID
+	 * @return Article Found Article
+	 */
+	public function getById(int $id) {
+		$article = $this->articleRepository->findById($id);
+
+		return $article;
 	}
 
 	/**

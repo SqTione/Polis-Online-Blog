@@ -13,9 +13,20 @@ class ArticleController extends Controller
 
     public function index()
     {
+        // Getting paginated articles
         $articles = $this->articleService->paginate();
 
+        // Returning paginated articles
         return response()->json($articles);
+    }
+
+    public function show(int $id) 
+    {
+        // Getting article by id
+        $article = $this->articleService->getById($id);
+
+        // Returning result
+        return $article;
     }
 
     public function store(ArticleRequest $request) 
