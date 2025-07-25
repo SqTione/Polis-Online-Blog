@@ -11,6 +11,13 @@ class ArticleController extends Controller
         public readonly ArticleService $articleService
     ) {}
 
+    public function index()
+    {
+        $articles = $this->articleService->paginate();
+
+        return response()->json($articles);
+    }
+
     public function store(ArticleRequest $request) 
     {
         // Request validation

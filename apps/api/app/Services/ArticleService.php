@@ -14,6 +14,33 @@ class ArticleService
 		private readonly ArticleRepository $articleRepository
 	) {}
 
+		public function index() 
+		{
+			$articles = $this->articleRepository->findAll();
+
+			return $articles;
+		}
+
+	/**
+	 * Gets paginated articles
+	 * @param int $perPage Count of articles per page (Default = 10)
+	 */
+	public function paginate(int $perPage = 10): Array {
+		$articles = $this->articleRepository->paginate($perPage);
+
+		return [
+			'articles' => $articles->items(),
+			'meta' => [
+				'total' => $articles->total(),
+				'current_page' => $articles->currentPage(),
+				'last_page' => $articles->lastPage()
+			],
+			'links' => [
+				'next' => $articles->nextPageUrl(),
+				'prev' => $articles->previousPageUrl()
+			]
+		];
+	}
 
 	/**
 	 * Creates new article
