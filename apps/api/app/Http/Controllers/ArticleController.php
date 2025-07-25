@@ -13,20 +13,12 @@ class ArticleController extends Controller
 
     public function index()
     {
-        // Getting paginated articles
-        $articles = $this->articleService->paginate();
-
-        // Returning paginated articles
-        return response()->json($articles);
+        return $this->articleService->paginate();
     }
 
-    public function showLast(int $id)
+    public function show(int $id)
     {
-        // Getting article by id
-        $article = $this->articleService->getById($id);
-
-        // Returning result
-        return $article;
+        return $this->articleService->getById($id);
     }
 
     public function store(ArticleRequest $request)
@@ -38,6 +30,6 @@ class ArticleController extends Controller
         $article = $this->articleService->create($articleDTO);
 
         // Returning response with created Article
-        return response()->json(['article' => $article], 201);
+        return response()->json([$article], 201);
     }
 }
