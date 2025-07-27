@@ -2,7 +2,6 @@ import { MoveLeft, MoveRight } from 'lucide-react'
 
 type PaginationProps = {
 	currentPage: number
-	totalPages: number
 	lastPage: number
 	onPageChange: (pageNumber: number) => void
 }

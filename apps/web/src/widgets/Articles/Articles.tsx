@@ -30,12 +30,17 @@ export const Articles = () => {
 						))
 					)}
 				</div>
-				<Pagination
-					currentPage={data?.meta.current_page}
-					totalPages={data?.meta.totalPages}
-					lastPage={data?.meta.last_page}
-					onPageChange={handlePageChange}
-				/>
+				{!isLoading && !data?.articles.length ? (
+					<p className='mx-auto text-center'>
+						Здесь ещё нет статей. Опубликуйте статью первым!
+					</p>
+				) : (
+					<Pagination
+						currentPage={data?.meta.current_page}
+						lastPage={data?.meta.last_page}
+						onPageChange={handlePageChange}
+					/>
+				)}
 			</div>
 		</section>
 	)
