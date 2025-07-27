@@ -10,7 +10,7 @@ export const ArticleCollapsed = ({
 	createdAt,
 }: ArticleProps) => {
 	return (
-		<article>
+		<article className='cursor-pointer'>
 			<div className='p-4 bg-zinc-200 rounded-xl'>
 				<div className='flex justify-between items-center mb-4'>
 					<h3>{title}</h3>

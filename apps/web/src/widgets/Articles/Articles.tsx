@@ -1,9 +1,16 @@
 import { ArticleCollapsed } from '@entities/Article'
 import type { TypeArticle } from '@shared/api'
+import { Pagination } from '@shared/components/Pagination'
+import { useState } from 'react'
 import { useGetArticles } from './useGetArticles'
 
 export const Articles = () => {
-	const [data, isLoading] = useGetArticles(1)
+	const [pageNumber, setPageNumber] = useState(1)
+	const [data, isLoading] = useGetArticles(pageNumber)
+
+	const handlePageChange = (page: number) => {
+		setPageNumber(page)
+	}
 
 	return (
 		<section id='articles'>
@@ -23,6 +30,12 @@ export const Articles = () => {
 						))
 					)}
 				</div>
+				<Pagination
+					currentPage={data?.meta.current_page}
+					totalPages={data?.meta.totalPages}
+					lastPage={data?.meta.last_page}
+					onPageChange={handlePageChange}
+				/>
 			</div>
 		</section>
 	)
