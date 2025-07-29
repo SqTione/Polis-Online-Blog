@@ -1,13 +1,17 @@
+import type { TypeCommentForm } from '@shared/api'
 import { useState } from 'react'
-import { useSendArticle } from './useSendArticle'
+import { useSendComment } from './useSendComment'
 
-export const CreateArticleForm = () => {
-	const [formData, setFormData] = useState({
-		title: '',
+type CreateCommentFormProps = {
+	articleId: number
+}
+
+export const CreateCommentForm = ({ articleId }: CreateCommentFormProps) => {
+	const [formData, setFormData] = useState<TypeCommentForm>({
+		author_name: '',
 		content: '',
 	})
-
-	const { sendArticle, isLoading, error, isSuccess } = useSendArticle()
+	const { sendComment, isLoading, error, isSuccess } = useSendComment()
 
 	const handleChange = (
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,22 +25,22 @@ export const CreateArticleForm = () => {
 	const handleSubmit = async (event: React.FormEvent) => {
 		event.preventDefault()
 
-		sendArticle(formData)
+		sendComment(formData, articleId)
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<h3 className='mb-4'>Создать статью</h3>
+		<form className='my-6' onSubmit={handleSubmit}>
+			<h3 className='mb-4'>Добавить комментарий</h3>
 			<div className='flex flex-col gap-3'>
 				<div className='flex flex-col gap-2'>
-					<label htmlFor='title'>Название статьи:</label>
+					<label htmlFor='author_name'>Ваше имя:</label>
 					<input
 						type='text'
-						id='title'
-						name='title'
-						placeholder='Название вашей статьи'
-						onChange={handleChange}
+						id='author_name'
+						name='author_name'
+						placeholder='Иван'
 						required
+						onChange={handleChange}
 					/>
 				</div>
 				<div className='flex flex-col gap-2'>
@@ -44,10 +48,10 @@ export const CreateArticleForm = () => {
 					<textarea
 						id='content'
 						name='content'
-						placeholder='Ваша статья'
+						placeholder='Что вы думаете об этой статье?'
 						rows={5}
-						onChange={handleChange}
 						required
+						onChange={handleChange}
 					/>
 				</div>
 				<button
@@ -57,7 +61,7 @@ export const CreateArticleForm = () => {
 					{isLoading ? 'Отправка' : 'Отправить'}
 				</button>
 				{error && <p style={{ color: 'red' }}>{error}</p>}
-				{isSuccess && <p style={{ color: 'green' }}>Статья создана!</p>}
+				{isSuccess && <p style={{ color: 'green' }}>Комментарий отправлен!</p>}
 			</div>
 		</form>
 	)
