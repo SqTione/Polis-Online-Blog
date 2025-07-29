@@ -3,7 +3,7 @@ apps/web/node_modules/
 apps/web/.vite/
 apps/web/.next/
 apps/web/dist/
-!apps/web/env
+!apps/web/.env
 
 # Laravel
 apps/api/vendor/
