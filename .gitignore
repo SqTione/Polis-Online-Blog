@@ -3,13 +3,14 @@ apps/web/node_modules/
 apps/web/.vite/
 apps/web/.next/
 apps/web/dist/
+!apps/web/env
 
 # Laravel
 apps/api/vendor/
 apps/api/storage/*
 !apps/api/storage/.gitignore
 apps/api/bootstrap/cache/
-apps/api/.env
+!apps/api/.env
 
 # Docker
 *.env

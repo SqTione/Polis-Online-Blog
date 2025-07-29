@@ -4,17 +4,17 @@
 
 ```
 └── 📁/
-		└── 📁apps										# Сервисы приложения
-        └── 📁api										# Laravel API
-        └── 📁web										# React Frontend
-    └── 📁dockerfiles							# Docker-файлы
+		└── 📁apps			        # Сервисы приложения
+        └── 📁api					    # Laravel API
+        └── 📁web						# React Frontend
+    └── 📁dockerfiles				# Docker-файлы
         ├── composer.Dockerfile
         ├── php.Dockerfile
         ├── web.Dockerfile
-    └── 📁env											# Файлы конфигурации
+    └── 📁env						# Файлы конфигурации
         ├── mysql.env
         ├── mysql.example.env
-    └── 📁nginx										# Конфигурация Nginx
+    └── 📁nginx					    # Конфигурация Nginx
         ├── nginx.conf
     ├── docker-compose.ym
     └── README.md
