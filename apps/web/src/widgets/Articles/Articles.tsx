@@ -15,7 +15,6 @@ export const Articles = () => {
 	}
 
 	const handleArticleClick = (articleId: number) => {
-		console.log('Нажали на статью', articleId)
 		navigate(`/articles/${articleId}`)
 	}
 
@@ -30,6 +29,7 @@ export const Articles = () => {
 						data?.articles.map((article: TypeArticle) => (
 							<ArticleCollapsed
 								key={article.id}
+								id={article.id}
 								title={article.title}
 								content={article.content}
 								createdAt={article.created_at}

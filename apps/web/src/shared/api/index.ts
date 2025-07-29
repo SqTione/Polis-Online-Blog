@@ -1,7 +1,15 @@
 export { api } from './api.instance'
+
+export { articleService } from './services/article.service'
 export type {
 	TypeArticle,
 	TypeArticleResponse,
 	TypeArticlesResponse,
 } from './types/article.types'
-export type { TypeComment } from './types/comment.types'
+
+export { commentService } from './services/comment.service'
+export type {
+	TypeComment,
+	TypeCommentForm,
+	TypeCommentResponse,
+} from './types/comment.types'
