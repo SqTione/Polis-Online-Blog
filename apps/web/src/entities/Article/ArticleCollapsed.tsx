@@ -1,8 +1,4 @@
-type ArticleProps = {
-	title: string
-	content: string
-	createdAt: string
-}
+import type { ArticleProps } from './article.types'
 
 export const ArticleCollapsed = ({
 	title,

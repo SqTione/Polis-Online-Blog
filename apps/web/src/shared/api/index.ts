@@ -4,3 +4,4 @@ export type {
 	TypeArticleResponse,
 	TypeArticlesResponse,
 } from './types/article.types'
+export type { TypeComment } from './types/comment.types'
