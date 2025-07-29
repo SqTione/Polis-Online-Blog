@@ -1,3 +1,4 @@
+import { CreateArticleForm } from '@features/create-article'
 import { Articles } from '@widgets/Articles'
 
 export const FeedPage = () => {
@@ -14,6 +15,11 @@ export const FeedPage = () => {
 					</p>
 				</div>
 			</main>
+			<section>
+				<div className='container-xs md:container mx-auto'>
+					<CreateArticleForm />
+				</div>
+			</section>
 			<Articles />
 		</>
 	)

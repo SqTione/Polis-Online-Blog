@@ -3,6 +3,7 @@ export { api } from './api.instance'
 export { articleService } from './services/article.service'
 export type {
 	TypeArticle,
+	TypeArticleForm,
 	TypeArticleResponse,
 	TypeArticlesResponse,
 } from './types/article.types'

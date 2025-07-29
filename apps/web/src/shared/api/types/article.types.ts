@@ -8,6 +8,11 @@ export type TypeArticle = {
 	updated_at: string
 }
 
+export type TypeArticleForm = {
+	title: string
+	content: string
+}
+
 export type TypeArticleResponse = TypeArticle & { comments: TypeComment[] }
 
 export type TypeArticlesResponse = {

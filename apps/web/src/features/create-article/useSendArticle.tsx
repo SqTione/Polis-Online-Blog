@@ -1,26 +1,26 @@
-import { commentService, type TypeCommentForm } from '@shared/api'
+import { articleService, type TypeArticleForm } from '@shared/api'
 import { useState } from 'react'
 
-export function useSendComment() {
+export function useSendArticle() {
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 	const [isSuccess, setIsSuccess] = useState(false)
 
-	const sendComment = async (data: TypeCommentForm, articleId: number) => {
+	const sendArticle = async (data: TypeArticleForm) => {
 		setIsLoading(true)
 		setError(null)
 		setIsSuccess(false)
 
 		try {
-			await commentService.sendComment(data, articleId)
+			await articleService.createArticle(data)
 			setIsSuccess(true)
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
-			setError(error.message || 'Произошла ошибка при отправке комментария')
+			setError(error.message || 'Произошла ошибка при создании статьи')
 		} finally {
 			setIsLoading(false)
 		}
 	}
 
-	return { sendComment, isLoading, error, isSuccess }
+	return { sendArticle, isLoading, error, isSuccess }
 }
