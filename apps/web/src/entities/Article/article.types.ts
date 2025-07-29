@@ -1,5 +1,5 @@
 export type ArticleProps = {
-	id: number
+	id?: number
 	title: string
 	content: string
 	comments?: []

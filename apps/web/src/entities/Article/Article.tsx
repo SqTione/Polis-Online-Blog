@@ -2,7 +2,6 @@ import type { TypeComment } from '@shared/api'
 import type { ArticleProps } from './article.types'
 
 export const Article = ({
-	id,
 	title,
 	content,
 	comments,
@@ -10,7 +9,7 @@ export const Article = ({
 }: ArticleProps) => {
 	return (
 		<div>
-			<article key={id}>
+			<article>
 				<div className='p-4 bg-zinc-200 rounded-xl'>
 					<div className='flex justify-between items-center mb-4'>
 						<h3>{title}</h3>
