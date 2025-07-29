@@ -42,7 +42,7 @@ class ArticleRepository implements IArticleRepository
 	 */
 	public function findById(int $id): Article
 	{
-		return Article::findOrFail($id);
+		return Article::with('comments')->findOrFail($id);
 	}
 
 	/**

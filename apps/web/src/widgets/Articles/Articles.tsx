@@ -2,14 +2,20 @@ import { ArticleCollapsed } from '@entities/Article'
 import type { TypeArticle } from '@shared/api'
 import { Pagination } from '@shared/components/Pagination'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useGetArticles } from './useGetArticles'
 
 export const Articles = () => {
 	const [pageNumber, setPageNumber] = useState(1)
 	const [data, isLoading] = useGetArticles(pageNumber)
+	const navigate = useNavigate()
 
 	const handlePageChange = (page: number) => {
 		setPageNumber(page)
+	}
+
+	const handleArticleClick = (articleId: number) => {
+		navigate(`/articles/${articleId}`)
 	}
 
 	return (
@@ -23,9 +29,13 @@ export const Articles = () => {
 						data?.articles.map((article: TypeArticle) => (
 							<ArticleCollapsed
 								key={article.id}
+								id={article.id}
 								title={article.title}
 								content={article.content}
 								createdAt={article.created_at}
+								onClick={() => {
+									handleArticleClick(article.id)
+								}}
 							/>
 						))
 					)}

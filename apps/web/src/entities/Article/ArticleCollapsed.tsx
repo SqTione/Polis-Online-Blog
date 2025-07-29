@@ -1,16 +1,13 @@
-type ArticleProps = {
-	title: string
-	content: string
-	createdAt: string
-}
+import type { ArticleProps } from './article.types'
 
 export const ArticleCollapsed = ({
 	title,
 	content,
 	createdAt,
-}: ArticleProps) => {
+	onClick,
+}: ArticleProps & { onClick?: () => void }) => {
 	return (
-		<article className='cursor-pointer'>
+		<article className='cursor-pointer' onClick={onClick}>
 			<div className='p-4 bg-zinc-200 rounded-xl'>
 				<div className='flex justify-between items-center mb-4'>
 					<h3>{title}</h3>

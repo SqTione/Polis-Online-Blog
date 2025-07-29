@@ -1,3 +1,5 @@
+import type { TypeComment } from './comment.types'
+
 export type TypeArticle = {
 	id: number
 	title: string
@@ -6,10 +8,10 @@ export type TypeArticle = {
 	updated_at: string
 }
 
-export type TypeArticleResponse = TypeArticle
+export type TypeArticleResponse = TypeArticle & { comments: TypeComment[] }
 
 export type TypeArticlesResponse = {
-	articles: TypeArticleResponse[]
+	articles: TypeArticle[]
 	meta: {
 		total: number
 		current_page: number
