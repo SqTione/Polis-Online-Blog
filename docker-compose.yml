@@ -15,8 +15,8 @@ services:
 
   web:
     build:
-      context: dockerfiles
-      dockerfile: web.Dockerfile
+      context: ./apps/web
+      dockerfile: ../../dockerfiles/web.Dockerfile
     restart: unless-stopped
     ports:
       - '5173:5173'

@@ -8,7 +8,9 @@ import { useEffect, useState } from 'react'
  * @param articleId Article ID
  * @returns data, isLoading
  */
-export function useGetArticle(articleId: number) {
+export function useGetArticle(
+	articleId: number
+): [TypeArticleResponse | null, boolean] {
 	const [data, setData] = useState<TypeArticleResponse | null>(null)
 	const [isLoading, setIsLoading] = useState(false)
 

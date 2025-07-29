@@ -3,7 +3,9 @@ import { articleService } from '@shared/api/services/article.service'
 import { format, parseISO } from 'date-fns'
 import { useEffect, useState } from 'react'
 
-export function useGetArticles(pageNumber: number = 1) {
+export function useGetArticles(
+	pageNumber: number = 1
+): [TypeArticlesResponse | null, boolean] {
 	const [data, setData] = useState<TypeArticlesResponse | null>(null)
 	const [isLoading, setIsLoading] = useState(false)
 

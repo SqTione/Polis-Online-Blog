@@ -7,12 +7,11 @@ export const ArticlePage = () => {
 	const articleId = Number(id)
 
 	const [data, isLoading] = useGetArticle(articleId)
-	console.log(data)
 
 	return (
 		<main>
 			<div className='container-xs md:container mx-auto'>
-				{isLoading ? (
+				{isLoading || !data ? (
 					<p className='mx-auto text-center'>Загрузка...</p>
 				) : (
 					<Article

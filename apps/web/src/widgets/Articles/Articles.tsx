@@ -46,8 +46,8 @@ export const Articles = () => {
 					</p>
 				) : (
 					<Pagination
-						currentPage={data?.meta.current_page}
-						lastPage={data?.meta.last_page}
+						currentPage={data?.meta.current_page ?? 1}
+						lastPage={data?.meta.last_page ?? 1}
 						onPageChange={handlePageChange}
 					/>
 				)}

@@ -1,7 +1,9 @@
+import type { TypeComment } from '@shared/api'
+
 export type ArticleProps = {
 	id: number
 	title: string
 	content: string
-	comments?: []
+	comments?: TypeComment[]
 	createdAt: string
 }
